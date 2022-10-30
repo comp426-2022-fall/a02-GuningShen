@@ -59,10 +59,10 @@ if (args.j) {
 }
 
 let days;
-if (!args.d) {
-    days = 1
-} else {
+if (args.d != null) {
     days = args.d;
+} else {
+    days = 1;
 }
 
 if (data.daily.precipitation_hours[days] != 0.0) {
