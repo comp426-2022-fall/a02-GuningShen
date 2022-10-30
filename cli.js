@@ -33,7 +33,7 @@ if (args.s) {
     latitude = '-' + args.s;
 }
 
-let longitude = '79.05';
+let longitude = '-79.05';
 if (args.e) {
     longtitude = args.e;
 }
@@ -47,7 +47,7 @@ if (args.z) {
 }
 
 const base_url = 'https://api.open-meteo.com/v1/forecast'
-const data_string = 'latitude=' + latitude + '&longitude=' + longitude + '&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,precipitation_hours,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=' + timezone
+const data_string = 'latitude=' + latitude + '&longitude=' + longitude + '&hourly=temperature_2m,windspeed_180m,winddirection_180m&daily=weathercode,precipitation_hours&temperature_unit=fahrenheit&timezone=' + timezone
 const url = base_url + '?' + data_string;
 
 const response = await fetch(url);
@@ -65,16 +65,16 @@ if (!args.d) {
     days = args.d;
 }
 
+if (data.daily.precipitation_hours[days] != 0.0) {
+    console.log("You might need your galoshes");
+} else{
+    console.log("You will not need your galoshes");
+}
+
 if (days == 0) {
     console.log("today.")
 } else if (days > 1) {
     console.log("in " + days + " days.")
 } else {
     console.log("tomorrow.")
-}
-
-if (data.daily.precipitation_hours[days] != 0.0) {
-    console.log("You might need your galoshes");
-} else{
-    console.log("You will not need your galoshes");
 }
