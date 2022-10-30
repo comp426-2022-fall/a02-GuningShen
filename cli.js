@@ -24,12 +24,13 @@ if (args.h) {
     }
 }
 
+
 let latitude = '35.92';
 if (args.n) {
     let latitude = parseFloat(args.n).toFixed(2);
 }
 if (args.s) {
-    let latitude = parseFloat(args.s).toFixed(2);
+    let latitude = (-1)*args.s;
 }
 
 let longitude = '79.05';
@@ -37,7 +38,7 @@ if (args.e) {
     let longtitude = parseFloat(args.e).toFixed(2);
 }
 if (args.w) {
-    let longitude = parseFloat(args.w).toFixed(2);
+    let longitude = (-1)*args.w;
 }
 
 let timezone = moment.tz.guess();
