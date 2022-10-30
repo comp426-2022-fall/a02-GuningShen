@@ -27,23 +27,23 @@ if (args.h) {
 
 let latitude = '35.92';
 if (args.n) {
-    let latitude = parseFloat(args.n).toFixed(2);
+    latitude = args.n;
 }
 if (args.s) {
-    let latitude = (-1)*args.s;
+    latitude = '-' + args.s;
 }
 
 let longitude = '79.05';
 if (args.e) {
-    let longtitude = parseFloat(args.e).toFixed(2);
+    longtitude = args.e;
 }
 if (args.w) {
-    let longitude = (-1)*args.w;
+    longitude = '-' + args.w;
 }
 
 let timezone = moment.tz.guess();
 if (args.z) {
-    let timezone = args.z;
+    timezone = args.z;
 }
 
 const base_url = 'https://api.open-meteo.com/v1/forecast'
