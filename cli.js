@@ -25,20 +25,24 @@ if (args.h) {
 }
 
 
-let latitude = '35.92';
+let latitude = '35';
+let longitude = '-79';
+
 if (args.n) {
     latitude = args.n;
-}
-if (args.s) {
+} else if (args.s) {
     latitude = '-' + args.s;
+} else {
+    console.log("Latitude must be in range");
+    process.exit(0);
 }
-
-let longitude = '-79.05';
 if (args.e) {
-    longtitude = args.e;
-}
-if (args.w) {
+    longitude = args.e;
+} else if (args.w) {
     longitude = '-' + args.w;
+} else {
+    console.log("Longitude must be in range");
+    process.exit(0);
 }
 
 let timezone = moment.tz.guess();
